@@ -1,42 +1,149 @@
+:root{
+    --selva-profunda:#0b3d2e;
+    --verde-amazonia:#12805c;
+    --verde-hoja:#22a06b;
+    --rio-amazonico:#0f8b8d;
+    --sol-tropical:#f4b942;
+    --fruta-amazonica:#e85d3f;
+    --fondo-selva:#e8f7e7;
+    --blanco-calido:#fffaf0;
+    --texto-principal:#173b2f;
+}
+
 body{
-    background-color:#7add8c;
+    background:
+        linear-gradient(180deg, rgba(232,247,231,0.96), rgba(255,250,240,0.94)),
+        linear-gradient(135deg, #0b3d2e, #22a06b 45%, #f4b942);
     font-family:Arial, sans-serif;
     text-align:justify;
+    color:var(--texto-principal);
 }
 
 h1,h2,h3{
-    color:#3b73a4;
+    color:var(--selva-profunda);
     font-weight:bold;
 }
 
+/* El !important puede ser necesario para sobreescribir estilos de Bootstrap */
+.bg-success{
+    background:linear-gradient(90deg, var(--selva-profunda), var(--verde-amazonia)) !important;
+}
+
+.navbar-brand{
+    color:var(--sol-tropical) !important;
+    font-weight:bold;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+    color:#fff6d8;
+}
+
+.navbar-dark .navbar-nav .nav-link:hover, .navbar-dark .navbar-nav .nav-link.active {
+    color:var(--sol-tropical);
+}
+
 #inicio{
-    background:rgb(186, 212, 188);
+    background:linear-gradient(135deg, #fffaf0, #d9f4d6);
     border-radius:15px;
-    margin-top:30px;
-    box-shadow:0 4px 10px rgba(126, 21, 21, 0.2);
+    margin-top:20px;
+    margin-bottom:30px;
+    border:2px solid rgba(34,160,107,0.25);
+    box-shadow:0 8px 24px rgba(11,61,46,0.22);
+}
+
+.galeria-inicio .card{
+    border-radius:15px;
+    overflow:hidden;
+}
+
+.galeria-inicio .card-img-top{
+    height:220px;
+    object-fit:cover;
+}
+
+.galeria-inicio .card-title{
+    color:var(--selva-profunda);
 }
 
 .card{
+    border:0;
+    background:var(--blanco-calido);
+    box-shadow:0 8px 18px rgba(11,61,46,0.16);
     transition:0.3s;
+    margin-bottom:0;
+    overflow:hidden;
+    height:100%;
 }
 
 .card:hover{
-    transform:scale(1.05);
+    transform:scale(1.03);
+    box-shadow:0 12px 24px rgba(11,61,46,0.24);
+}
+
+.productos-disponibles .card{
+    display:flex;
+    flex-direction:row;
+    align-items:stretch;
+    overflow:hidden;
+}
+
+.productos-disponibles .card-img-top{
+    width:220px;
+    height:100%;
+    min-height:180px;
+    object-fit:cover;
+    flex-shrink:0;
+}
+
+.productos-disponibles .card-body{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    padding:1.25rem 1.5rem;
+}
+
+.productos-disponibles .btn{
+    width:max-content;
+}
+
+.card-img-top{
+    width:100%;
+    height:220px;
+    object-fit:cover;
+    object-position:center;
+    display:block;
+}
+
+.card-body{
+    display:flex;
+    flex-direction:column;
+    gap:0.5rem;
+}
+
+.card .btn{
+    margin-top:auto;
+    align-self:flex-start;
+}
+
+.card-title{
+    color:var(--verde-amazonia);
 }
 
 .oferta-dinamica,
 .formulario-producto{
     border-radius:15px;
-    box-shadow:0 4px 10px rgba(0,0,0,0.2);
+    box-shadow:0 8px 22px rgba(11,61,46,0.2);
     padding:30px;
 }
 
 .oferta-dinamica{
-    background:#f8fff8;
+    background:linear-gradient(135deg, #f9fff3, #d7f1e5);
+    border:2px solid rgba(15,139,141,0.18);
 }
 
 .formulario-producto{
-    background:#ffffff;
+    background:var(--blanco-calido);
+    border:2px solid rgba(244,185,66,0.35);
 }
 
 .imagen-dinamica{
@@ -44,11 +151,21 @@ h1,h2,h3{
     max-width:380px;
     height:260px;
     object-fit:cover;
-    box-shadow:0 4px 10px rgba(0,0,0,0.2);
+    border:4px solid var(--sol-tropical);
+    box-shadow:0 8px 18px rgba(11,61,46,0.24);
+}
+
+.galeria-productos-dinamicos .card-img-top{
+    height:140px;
+    object-fit:cover;
+}
+
+.galeria-productos-dinamicos .card-title{
+    color:var(--selva-profunda);
 }
 
 .precio-dinamico{
-    color:#198754;
+    color:var(--fruta-amazonica);
     font-size:1.8rem;
     font-weight:bold;
 }
@@ -56,6 +173,7 @@ h1,h2,h3{
 .video-amazonico{
     max-width:720px;
     margin:0 auto;
+    margin-bottom:30px;
 }
 
 .imagen-quienes{
@@ -70,7 +188,16 @@ h1,h2,h3{
 }
 
 .boton-producto.activo{
-    box-shadow:0 0 0 3px rgba(25,135,84,0.25);
+    box-shadow:0 0 0 3px rgba(244,185,66,0.45);
+}
+
+#contador-descripcion{
+    font-size:0.9rem;
+}
+
+#boton-registrar:disabled{
+    cursor:not-allowed;
+    opacity:0.65;
 }
 
 img,
@@ -79,11 +206,77 @@ img,
 }
 
 footer{
-    margin-top:30px;
+    margin-top:50px;
+    padding:30px 0;
+    background:var(--selva-profunda) !important;
+    border-top:5px solid var(--sol-tropical);
 }
 
 .btn{
     border-radius:30px;
+}
+
+.btn-success{
+    background:linear-gradient(90deg, var(--verde-amazonia), var(--verde-hoja));
+    border-color:var(--verde-amazonia);
+    color:#ffffff;
+}
+
+.btn-success:hover{
+    background:linear-gradient(90deg, var(--selva-profunda), var(--verde-amazonia));
+    border-color:var(--selva-profunda);
+}
+
+.btn-outline-success{
+    border-color:var(--verde-amazonia);
+    color:var(--verde-amazonia);
+}
+
+.btn-outline-success:hover,
+.btn-outline-success.activo{
+    background:var(--verde-amazonia);
+    border-color:var(--verde-amazonia);
+    color:#ffffff;
+}
+
+.btn-warning{
+    background:var(--sol-tropical);
+    border-color:var(--sol-tropical);
+    color:var(--selva-profunda);
+    font-weight:bold;
+}
+
+.btn-primary{
+    background:var(--rio-amazonico);
+    border-color:var(--rio-amazonico);
+}
+
+.badge.bg-success{
+    background:var(--fruta-amazonica) !important;
+}
+
+.alert-success{
+    background:#d8f3dc;
+    border-color:var(--verde-hoja);
+    color:var(--selva-profunda);
+}
+
+.alert-danger{
+    background:#ffe1d9;
+    border-color:var(--fruta-amazonica);
+    color:#7a2417;
+}
+
+.bg-light{
+    background:var(--blanco-calido) !important;
+}
+
+.border-success{
+    border-color:var(--verde-hoja) !important;
+}
+
+aside{
+    border-left:6px solid var(--sol-tropical);
 }
 
 @media (max-width:345px){
@@ -100,6 +293,13 @@ footer{
         margin-bottom:20px;
     }
 
+}
+
+@media (min-width: 768px) {
+    .productos-disponibles .col-md-4{
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
 }
 
 @media (max-width:768px){
@@ -121,4 +321,10 @@ footer{
         height:280px;
     }
 
+    .productos-disponibles .card {
+        flex-direction: column;
+    }
+    .productos-disponibles .card-img-top {
+        width: 100%;
+    }
 }
